@@ -7,7 +7,12 @@ import App from './App.tsx'
 import PasswordRecovery from './src/PasswordRecovery'
 
 function Root() {
-  const [isPasswordRecovery, setIsPasswordRecovery] = useState(false)
+  const [isPasswordRecovery, setIsPasswordRecovery] = useState(() => {
+  return (
+    window.location.hash.includes('type=recovery') ||
+    new URLSearchParams(window.location.search).get('type') === 'recovery'
+  )
+})
 
   useEffect(() => {
     const { data: listener } = supabase.auth.onAuthStateChange(
