@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import { supabase } from './src/services/supabase'
+import { supabase } from '../services/supabase'
 
 export default function PasswordRecovery({
   onComplete,
